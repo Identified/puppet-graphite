@@ -96,6 +96,11 @@ class graphite::config inherits graphite::params {
 			content => template('graphite/opt/graphite/conf/storage-schemas.conf.erb'),
 			require => Anchor['graphite::install::end'],
 			notify  => $notify_services;
+        '/opt/graphite/conf/storage-aggregation.conf':
+            mode    => '0644',
+            content => template('graphite/opt/graphite/conf/storage-aggregation.conf.erb'),
+            require => Anchor['graphite::install::end'],
+            notify  => $notify_services;
 		'/opt/graphite/conf/carbon.conf':
 			mode    => '0644',
 			content => template('graphite/opt/graphite/conf/carbon.conf.erb'),
